@@ -1,0 +1,27 @@
+<!-- This is the markup for the table you should use. -->
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Roles</th>
+  </thead>
+  <tr *ngFor="let user of users">
+    <td>{{ user?.id }}</td>
+    <td>
+      <input
+        type="text"
+        [ngModel]="user.name"
+        (ngModelChange)="update(user, $event)"
+      />
+    </td>
+    <td>
+      <div
+        class="tag"
+        [style.background-color]="mapRole(roleId)?.colour"
+        *ngFor="let roleId of user.roles"
+      >
+        {{ mapRole(roleId)?.name }}
+      </div>
+    </td>
+  </tr>
+</table>
