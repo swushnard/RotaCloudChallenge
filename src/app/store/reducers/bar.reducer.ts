@@ -12,7 +12,6 @@ const _BarReducer = createReducer(
   on(actions.usersLoadSuccess, usersLoadSuccess),
   on(actions.usersLoadFailure, usersLoadFailure),
   on(actions.updateUser, updateUser),
-
   on(actions.rolesLoad, rolesLoad),
   on(actions.rolesLoadSuccess, rolesLoadSuccess),
   on(actions.rolesLoadFailure, rolesLoadFailure),

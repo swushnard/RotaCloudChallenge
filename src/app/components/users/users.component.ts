@@ -5,7 +5,6 @@ import { BarFacade } from "src/app/store/facade/bar.facade";
 import * as _ from "lodash";
 import { IRole } from "src/app/model/role";
 import { IUser } from "src/app/model/user";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-users",
@@ -18,15 +17,11 @@ export class UsersComponent implements OnInit, OnDestroy {
   public selectRolesState$: Observable<IRole[]>;
   public users: IUser[];
   public roles: IRole[];
-  public formCtrl: FormControl = new FormControl();
-  public form: FormGroup;
 
-  constructor(private barFacade: BarFacade, private fb: FormBuilder) {
+  constructor(private barFacade: BarFacade) {
     this.selectUsersState$ = this.barFacade.selectUserState$;
     this.selectRolesState$ = this.barFacade.selectRoleState$;
-    this.form = this.fb.group({
-      userName: new FormControl(""),
-    });
+
     this.selectUsersState$
       .pipe(debounceTime(1000), takeUntil(this.unsubscribe$))
       .subscribe((data) => {

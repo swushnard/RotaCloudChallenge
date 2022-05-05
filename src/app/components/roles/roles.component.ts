@@ -45,7 +45,6 @@ export class RolesComponent implements OnInit, OnDestroy {
 
   mapUserRole(): void {
     let tempRoles = _.cloneDeep(this.roles) as IRoleUser[];
-
     this.roles?.forEach((role) => {
       let tempuser = [];
       this.users?.forEach((user) => {
@@ -64,10 +63,6 @@ export class RolesComponent implements OnInit, OnDestroy {
       );
     });
     this.roleUsers = tempRoles;
-  }
-
-  onChange(value): void {
-    console.log(value);
   }
 
   update(user: IRole, e: string) {
